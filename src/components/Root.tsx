@@ -1,10 +1,10 @@
 import { TonConnectUIProvider } from '@tonconnect/ui-react';
 
-import { App } from '@/components/App.jsx';
-import { ErrorBoundary } from '@/components/ErrorBoundary.jsx';
-import { publicUrl } from '@/helpers/publicUrl.js';
+import { App } from '@/components/App.tsx';
+import { ErrorBoundary } from '@/components/ErrorBoundary.tsx';
+import { publicUrl } from '@/helpers/publicUrl.ts';
 
-function ErrorBoundaryError({ error }) {
+function ErrorBoundaryError({ error }: { error: unknown }) {
   return (
     <div>
       <p>An unhandled error occurred:</p>

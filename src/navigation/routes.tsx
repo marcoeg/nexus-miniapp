@@ -1,21 +1,19 @@
-import { IndexPage } from '@/pages/IndexPage/IndexPage.jsx';
-import { InitDataPage } from '@/pages/InitDataPage.jsx';
-import { LaunchParamsPage } from '@/pages/LaunchParamsPage.jsx';
-import { ThemeParamsPage } from '@/pages/ThemeParamsPage.jsx';
-import { TONConnectPage } from '@/pages/TONConnectPage/TONConnectPage.jsx';
+import type { ComponentType, JSX } from 'react';
 
-/**
- * @typedef {object} Route
- * @property {string} path
- * @property {import('react').ComponentType} Component
- * @property {string} [title]
- * @property {import('react').JSX.Element} [icon]
- */
+import { IndexPage } from '@/pages/IndexPage/IndexPage';
+import { InitDataPage } from '@/pages/InitDataPage.tsx';
+import { LaunchParamsPage } from '@/pages/LaunchParamsPage.tsx';
+import { ThemeParamsPage } from '@/pages/ThemeParamsPage.tsx';
+import { TONConnectPage } from '@/pages/TONConnectPage/TONConnectPage';
 
-/**
- * @type {Route[]}
- */
-export const routes = [
+interface Route {
+  path: string;
+  Component: ComponentType;
+  title?: string;
+  icon?: JSX.Element;
+}
+
+export const routes: Route[] = [
   { path: '/', Component: IndexPage },
   { path: '/init-data', Component: InitDataPage, title: 'Init Data' },
   { path: '/theme-params', Component: ThemeParamsPage, title: 'Theme Params' },

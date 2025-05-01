@@ -10,20 +10,24 @@ import {
   Text,
   Title,
 } from '@telegram-apps/telegram-ui';
+import type { FC } from 'react';
 
-import { DisplayData } from '@/components/DisplayData/DisplayData.jsx';
-import { Page } from '@/components/Page.jsx';
+import { DisplayData } from '@/components/DisplayData/DisplayData.tsx';
+import { Page } from '@/components/Page.tsx';
+import { bem } from '@/css/bem.ts';
 
 import './TONConnectPage.css';
 
-export function TONConnectPage() {
+const [, e] = bem('ton-connect-page');
+
+export const TONConnectPage: FC = () => {
   const wallet = useTonWallet();
 
   if (!wallet) {
     return (
       <Page>
         <Placeholder
-          className="ton-connect-page__placeholder"
+          className={e('placeholder')}
           header="TON Connect"
           description={
             <>
@@ -31,7 +35,7 @@ export function TONConnectPage() {
                 To display the data related to the TON Connect, it is required to connect your
                 wallet
               </Text>
-              <TonConnectButton className="ton-connect-page__button"/>
+              <TonConnectButton className={e('button')}/>
             </>
           }
         />
@@ -70,7 +74,7 @@ export function TONConnectPage() {
                 <Title level="3">{wallet.name}</Title>
               </Cell>
             </Section>
-            <TonConnectButton className="ton-connect-page__button-connected"/>
+            <TonConnectButton className={e('button-connected')}/>
           </>
         )}
         <DisplayData
@@ -100,4 +104,4 @@ export function TONConnectPage() {
       </List>
     </Page>
   );
-}
+};

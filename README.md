@@ -1,14 +1,11 @@
 # Telegram Mini Apps React Template
 
-> [!WARNING]
-> This template is archived and is more likely to be out of date. Consider using its supported [TypeScript alternative](https://github.com/Telegram-Mini-Apps/reactjs-template).
-
 This template demonstrates how developers can implement a single-page
 application on the Telegram Mini Apps platform using the following technologies
 and libraries:
 
 - [React](https://react.dev/)
-- [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
+- [TypeScript](https://www.typescriptlang.org/)
 - [TON Connect](https://docs.ton.org/develop/dapps/ton-connect/overview)
 - [@telegram-apps SDK](https://docs.telegram-mini-apps.com/packages/telegram-apps-sdk/2-x)
 - [Telegram UI](https://github.com/Telegram-Mini-Apps/TelegramUI)
@@ -32,6 +29,7 @@ npm install
 This project contains the following scripts:
 
 - `dev`. Runs the application in development mode.
+- `dev:https`. Runs the application in development mode using locally created valid SSL-certificates.
 - `build`. Builds the application for production.
 - `lint`. Runs [eslint](https://eslint.org/) to ensure the code quality meets
   the required standards.
@@ -60,18 +58,23 @@ process.
 To run the application in the development mode, use the `dev` script:
 
 ```bash
-npm run dev
+npm run dev:https
 ```
+
+> [!NOTE]
+> As long as we use [vite-plugin-mkcert](https://www.npmjs.com/package/vite-plugin-mkcert),
+> launching the dev mode for the first time, you may see sudo password request.
+> The plugin requires it to properly configure SSL-certificates. To disable the plugin, use the `npm run dev` command.
 
 After this, you will see a similar message in your terminal:
 
 ```bash
 VITE v5.2.12  ready in 237 ms
 
-➜  Local:   https://localhost:5173/reactjs-js-template
-➜  Network: https://172.18.16.1:5173/reactjs-js-template
-➜  Network: https://172.19.32.1:5173/reactjs-js-template
-➜  Network: https://192.168.0.171:5173/reactjs-js-template
+➜  Local:   https://localhost:5173/reactjs-template
+➜  Network: https://172.18.16.1:5173/reactjs-template
+➜  Network: https://172.19.32.1:5173/reactjs-template
+➜  Network: https://192.168.0.171:5173/reactjs-template
 ➜  press h + enter to show help
 ```
 
@@ -79,7 +82,7 @@ Here, you can see the `Local` link, available locally, and `Network` links
 accessible to all devices in the same network with the current device.
 
 To view the application, you need to open the `Local`
-link (`https://localhost:5173/reactjs-js-template` in this example) in your
+link (`https://localhost:5173/reactjs-template` in this example) in your
 browser:
 
 ![Application](assets/application.png)
@@ -88,8 +91,8 @@ It is important to note that some libraries in this template, such as
 `@telegram-apps/sdk`, are not intended for use outside of Telegram.
 
 Nevertheless, they appear to function properly. This is because the
-`src/mockEnv.js` file, which is imported in the application's entry point (
-`src/index.js`), employs the `mockTelegramEnv` function to simulate the Telegram
+`src/mockEnv.ts` file, which is imported in the application's entry point (
+`src/index.ts`), employs the `mockTelegramEnv` function to simulate the Telegram
 environment. This trick convinces the application that it is running in a
 Telegram-based environment. Therefore, be cautious not to use this function in
 production mode unless you fully understand its implications.
@@ -120,7 +123,7 @@ Before running the deployment process, ensure that you have done the following:
 1. Replaced the `homepage` value in `package.json`. The GitHub Pages deploy tool
    uses this value to
    determine the related GitHub project.
-2. Replaced the `base` value in `vite.config.js` and have set it to the name of
+2. Replaced the `base` value in `vite.config.ts` and have set it to the name of
    your GitHub
    repository. Vite will use this value when creating paths to static assets.
 
@@ -133,7 +136,7 @@ name is `is-awesome`, the value in the `homepage` field should be the following:
 }
 ```
 
-And `vite.config.js` should have this content:
+And `vite.config.ts` should have this content:
 
 ```ts
 export default defineConfig({

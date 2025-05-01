@@ -5,6 +5,7 @@ module.exports = {
   },
   extends: [
     'eslint:recommended',
+    'plugin:@typescript-eslint/recommended',
     'plugin:react/recommended'
   ],
   overrides: [
@@ -20,20 +21,16 @@ module.exports = {
       }
     }
   ],
-  parser: '@babel/eslint-parser',
+  parser: '@typescript-eslint/parser',
   parserOptions: {
-    requireConfigFile: false,
-    babelOptions: {
-      babelrc: false,
-      configFile: false,
-      presets: ['@babel/preset-env', '@babel/preset-react'],
-    },
+    ecmaVersion: 'latest',
+    sourceType: 'module'
   },
   plugins: [
+    '@typescript-eslint',
     'react'
   ],
   rules: {
     'react/react-in-jsx-scope': 0,
-    'react/prop-types': 0,
   }
 };

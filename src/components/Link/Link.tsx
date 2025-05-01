@@ -1,25 +1,23 @@
-import { classNames, openLink } from '@telegram-apps/sdk-react';
-import { useCallback } from 'react';
-import { Link as RouterLink } from 'react-router-dom';
+import { openLink } from '@telegram-apps/sdk-react';
+import { type FC, type MouseEventHandler, useCallback } from 'react';
+import { Link as RouterLink, type LinkProps } from 'react-router-dom';
+
+import { classNames } from '@/css/classnames.ts';
 
 import './Link.css';
 
-/**
- * @param {import('react-router-dom').LinkProps} props
- * @return {JSX.Element}
- */
-export function Link({
+export const Link: FC<LinkProps> = ({
   className,
   onClick: propsOnClick,
   to,
   ...rest
-}) {
-  const onClick = useCallback((e) => {
+}) => {
+  const onClick = useCallback<MouseEventHandler<HTMLAnchorElement>>((e) => {
     propsOnClick?.(e);
 
-    // Compute if target path is external. In this case we would like to open link using
-    // TMA method.
-    let path;
+    // Compute if target path is external. In this case we would like to open
+    // link using TMA method.
+    let path: string;
     if (typeof to === 'string') {
       path = to;
     } else {
@@ -46,4 +44,4 @@ export function Link({
       className={classNames(className, 'link')}
     />
   );
-}
+};
