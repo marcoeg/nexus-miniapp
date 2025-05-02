@@ -74,7 +74,7 @@ async def start(update: Update, context: CallbackContext):
     logger.info(f"User {update.effective_user.id} started the bot")
     keyboard = [
         [InlineKeyboardButton(
-            "Open Mini App",
+            "Open Nexus26",
             web_app={"url": MINI_APP_URL}
         )]
     ]
