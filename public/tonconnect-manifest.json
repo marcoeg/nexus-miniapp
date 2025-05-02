@@ -1,5 +1,7 @@
 {
   "url": "http://www.graziano.ai/nexus-miniapp/",
   "name": "Nexus26",
-  "iconUrl": "https://ton.vote/logo.png"
+  "iconUrl": "https://ton.vote/logo.png",
+  "termsOfUseUrl": "http://www.graziano.ai/terms-of-use.html",
+  "privacyPolicyUrl": "http://www.graziano.ai/privacy-policy.html"
 }
